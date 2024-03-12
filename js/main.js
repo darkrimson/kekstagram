@@ -1,3 +1,5 @@
-import images from "./create-image.js";
+import fragment from "./create-image.js";
 
-console.log(images);
+let picturesSection = document.querySelector(".pictures");
+picturesSection.append(fragment);
+
