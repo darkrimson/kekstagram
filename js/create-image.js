@@ -1,24 +1,11 @@
-import { getRandomInteger, getRandomId, comments } from "./util.js";
-import { descriptions } from "./data.js";
+import images from "./generation-image.js";
 
-  const createImage = () => ({
-    id: getRandomId(),
-    url: "photos/" + getRandomInteger(1, 25) + ".jpg",
-    description: descriptions[getRandomInteger(0, descriptions.length - 1)],
-    likes: getRandomInteger(15, 200),
-    comments: comments,
-  });
-  
-  const images = Array.from({ length: 25 }, () => createImage());
-
-  //add pictures to DOM
-
-  let templatePicture = document.querySelector("#picture").content;
+let templatePicture = document.querySelector("#picture").content;
   let templatePictureContent = templatePicture.querySelector(".picture");
   let fragment = document.createDocumentFragment();
 
   for (let i = 0; i < images.length; i++) {
-    let element = templatePictureContent.cloneNode(true);
+    let element = templatePictureContent.cloneNode(true); 
     let image = element.querySelector(".picture__img");
     let likes = element.querySelector(".picture__likes");
     let comments = element.querySelector(".picture__comments");
@@ -32,4 +19,3 @@ import { descriptions } from "./data.js";
   }
 
   export default fragment;
-  
