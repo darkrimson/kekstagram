@@ -1,4 +1,3 @@
-import { names, messages } from './data.js';
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -16,13 +15,19 @@ const getRandomId = () => {
   return id;
 };
 
-const getCreateComment = (names, messages) => ({
+const CreateComment = (names, messages) => ({
   id: getRandomInteger(1, 25),
   avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
   message: messages[getRandomInteger(0, messages.length - 1)],
   name: names[getRandomInteger(0, names.length - 1)],
 });
 
-const comments = Array.from({ length: 5 }, () => getCreateComment(names, messages));
+const createComments = (names, messages, minComments, maxComments) => {
+  const count = getRandomInteger(minComments, maxComments);
+  const comments = Array.from({ length: count }, () => CreateComment(names, messages));
+  return comments;
+};
 
-export { getRandomInteger, getRandomId, comments };
+
+
+export { getRandomInteger, getRandomId, createComments };

@@ -1,15 +1,15 @@
-import { getRandomInteger, getRandomId, comments } from "./util.js";
-import { descriptions } from "./data.js";
+import { getRandomInteger, getRandomId, createComments } from "./util.js";
+import { names, messages, descriptions } from './data.js';
 
-  const createImage = () => ({
+  const createImage = (index) => ({
     id: getRandomId(),
-    url: "photos/" + getRandomInteger(1, 25) + ".jpg",
+    url: `photos/${index + 1}.jpg`,
     description: descriptions[getRandomInteger(0, descriptions.length - 1)],
     likes: getRandomInteger(15, 200),
-    comments: comments,
+    comments: createComments(names, messages, 0, 25),
   });
   
-  const images = Array.from({ length: 25 }, () => createImage());
+  const images = Array.from({ length: 25 }, (el, index) => createImage(index));
 
   export default images;
   
