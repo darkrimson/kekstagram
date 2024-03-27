@@ -28,6 +28,13 @@ const createComments = (names, messages, minComments, maxComments) => {
   return comments;
 };
 
+const closeModal = (modalElement, closeButtonElement) => {
+  modalElement.classList.add("hidden");
+  document.body.classList.remove("modal-open");
+  
+  closeButtonElement.removeEventListener("click", closeModal);
+  document.removeEventListener("keydown", closeModal);
+};
 
 
-export { getRandomInteger, getRandomId, createComments };
+export { getRandomInteger, getRandomId, createComments, closeModal };
